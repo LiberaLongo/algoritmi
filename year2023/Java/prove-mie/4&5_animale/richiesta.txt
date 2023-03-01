@@ -1,0 +1,31 @@
+Esercizio 4
+Implementare le classi Java necessarie a modellare questa situazione:
+	 • Ogni animale fa un verso e ha un certo numero di zampe:
+		 • Il gatto ha 4 zampe e miagola
+		 • Il cane ha 4 zampe e abbaia
+		 • Il tacchino ha 2 zampe e goglotta
+	 • Ogni esemplare di animale ha un nome e un anno di nascita. Per semplicità si tiene traccia solo degli anni e l’età si calcola come il numero di anni trascorsi dalla data corrente
+Definire una classe astratta Animale e le sottoclassi concrete, implementando 
+opportunamente i metodi per recuperare: verso dell’animale (stringa), numero di zampe 
+(intero), ed età (intero). Sovrascrivere il metodo toString() per combinare queste 
+informazioni in una stringa.
+Nota: vedi java.time e java.util.Date per gestire le date.
+Implementare inoltre il metodo confronta(Animale a)che permette di confrontare un 
+animale con un altro (anche di specie diversa) in base alla loro età in anni.
+Creare infine una classe test nel cui metodo main() sono istanziati alcuni animali e verificato 
+il funzionamento dei metodi precedenti.
+
+
+Esercizio 5:
+Definire il comportamento di un animale (verso e numero di zampe) tramite un’interfaccia 
+IAnimale. 
+Modificare le classi precedenti per usare l’interfaccia IAnimale piuttosto che la classe 
+astratta Animale. 
+Nota: la modellazione con classe astratta è più corretta e da preferire in casi come questo.
+
+
+Modifiche fatte alla consegna 5:
+l'obbiettivo era utilizzare un interfaccia
+problema(annotato nel testo): devo re-implementare le stesse funzioni nelle classi concrete (copia-incolla!)
+quindi: invece che usare un interfaccia per le classi concrete la uso per la classe astratta che mi è stato chiesto di togliere.
+
