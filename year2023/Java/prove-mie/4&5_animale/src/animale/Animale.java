@@ -30,7 +30,8 @@ public abstract class Animale implements IAnimale{
         return LocalDate.now().getYear() - this.anno_nascita;
     }
 
-    public int confronta(Animale a) {
+	@Override
+    public int compareTo(Animale a) {
         return this.getAge() - a.getAge();
     }
 

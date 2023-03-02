@@ -12,7 +12,7 @@ public class Test {
         System.out.println(gluglu);
         System.out.println("Io ho una gatta di nome " + micia.getNome() + " che non sembra " + micia.getVerso() + "re molto bene...");
         System.out.print("Il gatto di mia nonna si chiama " + pucci.getNome());
-        if(pucci.confronta(micia) > 0)
+        if(pucci.compareTo(micia) > 0)
             System.out.println(" lui è il più vecchio dei due.");
         else
             System.out.println(" lei dovrebbe non essere più vecchia.");

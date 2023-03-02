@@ -28,5 +28,9 @@ public class Persona {
 
     public String toString() {
         return nome + " " + nascita;
+    }    
+
+    public int compareTo(Persona p) {
+        return this.nascita.compareTo(p.getNascita());
     }
 }

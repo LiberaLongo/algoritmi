@@ -17,7 +17,7 @@ public class Main {
 
         Impiegato[] array = {Renzo, Pif, Luigi};
 
-        for(int i = 0; i < array.length; i++) System.out.println(array[i]);
+        for(Persona p : array) System.out.println(p);
 
         System.out.println("I found " + ImpiegatiDemo.cercaGiovane(array) + " as younger employer");
     }
