@@ -13,7 +13,16 @@ def readVector(filename):
 def writeVector(vector, filename):
 	with open(filename, 'w') as file:
 		for number in vector:
-			file.write(str(number));
+			file.write(' ' + str(number));
+
+def ordinamento(funzione):
+	read = sys.argv[1];
+	write = sys.argv[2];
+	vector = readVector(read);
+	print(' input =', vector);
+	output = funzione(vector, len(vector));
+	print('output =', output);
+	writeVector(output, write);
 
 def main(function, usage, x):
 	try:
