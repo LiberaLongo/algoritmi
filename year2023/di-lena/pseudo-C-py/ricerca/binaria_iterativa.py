@@ -4,7 +4,7 @@ import sys;
 import fileVector as fv;
 
 def ricerca_binaria(A, x): # vector A, int x
-	print(f'ricerca binaria di {x} in {A}');
+	print(f'ricerca binaria iterativa di {x}.');
 	i = 0;
 	j = len(A) -1;
 	while i <= j:

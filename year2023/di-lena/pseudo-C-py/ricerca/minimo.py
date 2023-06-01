@@ -4,6 +4,7 @@ import sys;
 import fileVector as fv;
 
 def minimo(A, x): # vector A, x is none
+	print('ricerca del minimo');
 	m = 0;
 	for i in range(1,len(A)):
 		if A[i] < A[m]:

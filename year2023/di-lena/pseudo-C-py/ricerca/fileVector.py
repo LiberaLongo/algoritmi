@@ -19,6 +19,7 @@ def main(function, usage, x):
 	try:
 		name = sys.argv[1];
 		vector = readVector(name);
+		print('vector =', vector);
 		return function(vector, x);
 	except OSError:
 		print(f'usage {sys.argv[0]} {usage}');
