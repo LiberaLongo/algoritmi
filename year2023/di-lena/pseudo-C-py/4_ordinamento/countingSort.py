@@ -23,4 +23,9 @@ def countingSort(A, n):
 	return A;
 
 if __name__ == '__main__':
+	print('CountingSort:');
+	print('ottimo, medio, pessimo: Θ(n+k)');
+	print('in place: no, stabile: si');
+	print('\nn = n° elementi da ordinare');
+	print('k = ampiezza del range di valori chiave');
 	fv.ordinamento(countingSort);

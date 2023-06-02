@@ -28,4 +28,8 @@ def launchQuickSort(A, n):
 	return quickSort(A, 0, n-1);
 
 if __name__ == '__main__':
+	print('QuickSort:');
+	print('ottimo: Θ(n log n), \n\tmedio: O(n log n),\n\t\tpessimo: Θ(n^2)');
+	print('in place: si, stabile: no');
+	print('\nn = n° elementi da ordinare');
 	fv.ordinamento(launchQuickSort);

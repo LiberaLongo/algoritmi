@@ -40,4 +40,8 @@ def launchMergeSort(A, n):
 	return mergesort(A, 0, n-1);
 
 if __name__ == '__main__':
+	print('MergeSort:');
+	print('ottimo, medio, pessimo: Θ(n log n)');
+	print('in place: no, stabile: si');
+	print('\nn = n° elementi da ordinare');
 	fv.ordinamento(launchMergeSort);

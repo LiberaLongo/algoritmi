@@ -11,4 +11,8 @@ def insertionSort(A, n):
 	return A;
 
 if __name__ == '__main__':
+	print('InsertionSort:');
+	print('ottimo, medio, pessimo: Θ(n^2)');
+	print('in place: si, stabile: si');
+	print('\nn = n° elementi da ordinare');
 	fv.ordinamento(insertionSort);

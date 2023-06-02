@@ -15,4 +15,8 @@ def selectionSort(A, n):
 	return A;
 
 if __name__ == '__main__':
+	print('InsertionSort:');
+	print('ottimo: Θ(n)\n\tmedio, pessimo: Θ(n^2)');
+	print('in place: si, stabile: si');
+	print('\nn = n° elementi da ordinare');
 	fv.ordinamento(selectionSort);
