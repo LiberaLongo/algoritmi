@@ -15,6 +15,11 @@ def writeVector(vector, filename):
 		for number in vector:
 			file.write(' ' + str(number));
 
+def swap(A, i, j):
+	tmp = A[i];
+	A[i] = A[j];
+	A[j] = tmp;
+
 def ordinamento(funzione):
 	read = sys.argv[1];
 	write = sys.argv[2];
