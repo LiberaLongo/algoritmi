@@ -1,20 +1,20 @@
 #commands
 CC = g++
 CFLAGS = -Wall -g
+LINK = g++
 
 #folders
-sd = ./struttura-dati/
-build = ./build/
+SRC_DIR := ./src
+OBJ_DIR := ./build
+SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp)
+OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
  
-app: $(build)main.o $(build)Lista.o
-	$(CC) $(CFLAGS) -o app $(build)main.o $(build)Lista.o
- 
-$(build)main.o: $(sd)main.cpp $(sd)Lista.hpp
-	mkdir -p $(build)
-	$(CC) $(CFLAGS) -o $(build)main.o -c $(sd)main.cpp
+app: $(OBJ_FILES)
+	$(LINK) -o $@ $^
 
-$(build)Lista.o: $(sd)Lista.hpp $(sd)Lista.cpp
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	cd $(build)
-	rm *.o app
+	rm -rf $(OBJ_DIR) app
