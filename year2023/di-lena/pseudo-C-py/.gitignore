@@ -4,6 +4,7 @@ __pycache__/
 ### vscode ###
 .vscode/
 
-### C++ ###
+### C++ and C ###
 build/
 app
+*.o
