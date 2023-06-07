@@ -2,14 +2,13 @@
 #define DICTIONARY_ARRAY_ORDINATO_HPP
 
 #include "./Dictionary.hpp"
-
-const int MAXN = 200;
+using namespace std;
 
 template <typename KeyType, typename DataType>
 class ArrayDisordDict
 {
 	private:
-		vector<pair<KeyType, DataType>> A[MAXN];
+		vector<pair<KeyType, DataType>> A = {};
 		int size;
 		int linsearch(KeyType key);
 	public:

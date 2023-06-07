@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector> //per le coppie <chiave, valore>
 //quindi first è key, second è data
-using namespace std;
 
 //interfaccia
 
