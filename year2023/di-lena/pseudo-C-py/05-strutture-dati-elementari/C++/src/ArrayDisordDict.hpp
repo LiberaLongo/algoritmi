@@ -3,22 +3,27 @@
 
 #include "./Dictionary.hpp"
 
+const int MAXN = 200;
+
 template <typename KeyType, typename DataType>
-class ArrayDisordDict : public Dictionary {
+class ArrayDisordDict
+{
 	private:
-		A[];
+		vector<pair<KeyType, DataType>> A[MAXN];
 		int size;
+		int linsearch(KeyType key);
 	public:
 		//costruttore
 		ArrayDisordDict();
 		//distruttore
 		virtual ~ArrayDisordDict(){};
 		//dictionary
-		DataType Search(KeyType k);
-		void Insert(KeyType k, DataType e);
-		void Delete(KeyType k);
+		DataType Search(KeyType key);
+		void Insert(KeyType key, DataType e);
+		void Delete(KeyType key);
 		//stampe
 		void print(void);
+		void print(string str);
 };
 
 #endif //DICTIONARY_ARRAY_ORDINATO_HPP
