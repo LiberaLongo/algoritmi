@@ -29,10 +29,11 @@ template <typename KeyType, typename DataType>
 void ArrayDisordDict<KeyType, DataType>::Insert(KeyType key, DataType data) {
 	int i = linsearch(key);
 	if (i == -1) {
+		i = this->size;
 		this->size ++;
-		i = this->size -1;
+		this->A.insert(this->A.begin() +i, make_pair(key, data));
 	}
-	this->A.insert(this->A.begin() +i, make_pair(key, data));
+	this->A[i] = make_pair(key, data);
 }
 
 template <typename KeyType, typename DataType>

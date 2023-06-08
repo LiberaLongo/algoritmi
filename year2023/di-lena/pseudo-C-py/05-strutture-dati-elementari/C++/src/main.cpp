@@ -26,7 +26,9 @@ void test_lista() {
 	lista.print("remove head");
 }
 void dictionary_array_disordinati() {
+	//declaration
 	ArrayDisordDict<int, string> diz = ArrayDisordDict<int, string>();
+	//insert in tail
 	diz.Insert(1, "hello");
 	diz.print();
 	diz.Insert(2, "darkness");
@@ -34,6 +36,14 @@ void dictionary_array_disordinati() {
 	diz.Insert(3, "my dear");
 	diz.print();
 	diz.Insert(4, "friend");
+	diz.print();
+	//replace
+	diz.Insert(3, "my");
+	diz.print();
+	diz.Insert(4, "dear");
+	diz.print();
+	//insert again in tail
+	diz.Insert(5, "friend");
 	diz.print();
 }
 int main(int argc, char *argv[]) {
