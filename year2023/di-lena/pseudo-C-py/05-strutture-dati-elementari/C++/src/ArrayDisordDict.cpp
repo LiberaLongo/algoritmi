@@ -30,10 +30,9 @@ void ArrayDisordDict<KeyType, DataType>::Insert(KeyType key, DataType data) {
 	int i = linsearch(key);
 	if (i == -1) {
 		this->size ++;
-		i = this->size;
+		i = this->size -1;
 	}
-	//this->A.push_back(make_pair(key, data));
-	this->A.push_back(make_pair(key, data));
+	this->A.insert(this->A.begin() +i, make_pair(key, data));
 }
 
 template <typename KeyType, typename DataType>
@@ -51,7 +50,7 @@ void ArrayDisordDict<KeyType, DataType>::print(void) {
 	cout << "Array Disordinato:\n";
 	for (int i = 0; i < this->size; ++i) {
         cout << "(" << this->A.at(i).first << ","
-            << this->A.at(i).second << ")" << "; ";
+            << this->A.at(i).second << ")" << "-> ";
     }
     cout << endl;
 }
