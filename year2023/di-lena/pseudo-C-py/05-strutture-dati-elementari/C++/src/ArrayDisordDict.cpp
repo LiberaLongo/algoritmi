@@ -17,7 +17,7 @@ int ArrayDisordDict<KeyType, DataType>::linsearch(KeyType key) {
 
 //dictionary
 template <typename KeyType, typename DataType>
-DataType ArrayDisordDict<KeyType, DataType>::Search(KeyType key) {
+DataType ArrayDisordDict<KeyType, DataType>::search(KeyType key) {
 	int i = linsearch(key);
 	if (i != -1)
 		return this->A.at(i).second;
@@ -26,34 +26,35 @@ DataType ArrayDisordDict<KeyType, DataType>::Search(KeyType key) {
 }
 
 template <typename KeyType, typename DataType>
-void ArrayDisordDict<KeyType, DataType>::Insert(KeyType key, DataType data) {
+void ArrayDisordDict<KeyType, DataType>::insert(KeyType key, DataType data) {
 	int i = linsearch(key);
 	if (i == -1) {
-		i = this->size;
 		this->size ++;
-		this->A.insert(this->A.begin() +i, make_pair(key, data));
-	}
-	this->A[i] = make_pair(key, data);
+		//inserimento alla fine
+		this->A.push_back(make_pair(key, data));
+	} else
+		this->A[i] = make_pair(key, data);
 }
 
 template <typename KeyType, typename DataType>
-void ArrayDisordDict<KeyType, DataType>::Delete(KeyType key) {
+void ArrayDisordDict<KeyType, DataType>::remove(KeyType key) {
 	int i = linsearch(key);
 	if (i != -1) {
 		//leftshift(i);
-		this->size --;	
+		this->size --;
+		this->A.erase(this->A.begin() + i);
 	}
 }
 
 //stampe
 template <typename KeyType, typename DataType>
 void ArrayDisordDict<KeyType, DataType>::print(void) {
-	cout << "Array Disordinato:\n";
+	cout << "Array Disordinato: [";
 	for (int i = 0; i < this->size; ++i) {
         cout << "(" << this->A.at(i).first << ","
-            << this->A.at(i).second << ")" << "-> ";
+            << this->A.at(i).second << ")" << "; ";
     }
-    cout << endl;
+    cout << "]" << endl;
 }
 
 template <typename KeyType, typename DataType>

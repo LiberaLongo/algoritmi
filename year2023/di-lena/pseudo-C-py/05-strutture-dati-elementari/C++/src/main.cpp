@@ -1,13 +1,9 @@
+#define DIZIONARIO //scegli cosa vuoi che sia definito...
+
+#ifdef LISTA
 #include "./Lista.hpp"
-#include "./ArrayDisordDict.hpp"
-
-//per utilizzare i template...
-#include "./Lista.cpp"
+#include "./Lista.cpp" //per i templates serve il CPP
 template class Lista<int>; //dichiariamo che ci serve una lista di interi
-
-#include "./ArrayDisordDict.cpp"
-template class ArrayDisordDict<int, string>;
-
 void test_lista() {
 	Lista<int> lista = Lista<int>();
 	cout << "vuota? " << lista.empty() << endl;
@@ -25,27 +21,48 @@ void test_lista() {
 	lista.remove_head();
 	lista.print("remove head");
 }
-void dictionary_array_disordinati() {
+#endif //LISTA
+
+#ifdef DIZIONARIO
+#include "./ArrayDisordDict.hpp"
+#include "./ArrayOrdDict.hpp"
+//per i template servono i CPP
+#include "./ArrayDisordDict.cpp"
+#include "./ArrayOrdDict.cpp"
+template class ArrayDisordDict<int, string>;
+template class ArrayOrdDict<int, string>;
+
+void dictionary() {
 	//declaration
-	ArrayDisordDict<int, string> diz = ArrayDisordDict<int, string>();
+	//ArrayDisordDict<int, string> diz = ArrayDisordDict<int, string>();
+	ArrayOrdDict<int, string> diz = ArrayOrdDict<int, string>();
 	//insert in tail
-	diz.Insert(1, "hello");
+	diz.insert(3, "my dear");
 	diz.print();
-	diz.Insert(2, "darkness");
+	diz.insert(4, "friend");
 	diz.print();
-	diz.Insert(3, "my dear");
+	diz.insert(1, "hello");
 	diz.print();
-	diz.Insert(4, "friend");
+	diz.insert(2, "darkness");
 	diz.print();
 	//replace
-	diz.Insert(3, "my");
+	diz.insert(3, "my");
 	diz.print();
-	diz.Insert(4, "dear");
+	diz.insert(4, "dear");
 	diz.print();
 	//insert again in tail
-	diz.Insert(5, "friend");
+	diz.insert(5, "friend");
+	diz.print();
+
+	//and now remove...
+	diz.remove(3);
+	diz.print();
+	//an element that doesn't exists
+	diz.remove(6);
 	diz.print();
 }
+#endif //DIZIONARIO
+
 int main(int argc, char *argv[]) {
-	dictionary_array_disordinati();
+	dictionary();
 }

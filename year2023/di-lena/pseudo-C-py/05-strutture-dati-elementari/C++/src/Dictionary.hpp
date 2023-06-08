@@ -11,19 +11,19 @@ template <typename KeyType, typename DataType>
 class Dictionary{
     public:
 /* search(Key k)
-* - Cerca la chiave k tramite ricerca lineare sull’array
+* - Cerca la chiave kì
 * - Ritorna i dati associati a k o NIL */
-		virtual DataType Search(KeyType key) = 0;
+		virtual DataType search(KeyType key) = 0;
 /* insert(Key k, Data d)
-* - Verifica con ricerca lineare se k è presente nell’array
-* - Se k è nell’array, sostituisce i dati
+* - Verifica con ricerca lineare se k è presente
+* - Se k è presente, sostituisce i dati
 * - Altrimenti, inserisce la coppia (k, d) nella prima posizione libera*/
-		virtual void Insert(KeyType key, DataType data) = 0;
+		virtual void insert(KeyType key, DataType data) = 0;
 /* delete(Key k)
 Cerca k tramite ricerca lineare
-Se k è nell’array, rimuove la coppia (k, d) dall’array
+Se k è presente, rimuove la coppia (k, d) dalla struttura dati
 Sposta di una posizione a sinistra tutte le coppie dopo k */
-		virtual void Delete(KeyType key) = 0;
+		virtual void remove(KeyType key) = 0;
 };
 
 #endif //DICTIONARY_HPP
