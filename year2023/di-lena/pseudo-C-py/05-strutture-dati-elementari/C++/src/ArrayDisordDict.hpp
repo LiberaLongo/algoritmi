@@ -2,7 +2,11 @@
 #define DICTIONARY_ARRAY_ORDINATO_HPP
 
 #include "./Dictionary.hpp"
+
+#include <vector>
+#include <utility>
 using namespace std;
+
 
 template <typename KeyType, typename DataType>
 class ArrayDisordDict
@@ -18,7 +22,7 @@ class ArrayDisordDict
 		virtual ~ArrayDisordDict(){};
 		//dictionary
 		DataType Search(KeyType key);
-		void Insert(KeyType key, DataType e);
+		void Insert(KeyType key, DataType data);
 		void Delete(KeyType key);
 		//stampe
 		void print(void);

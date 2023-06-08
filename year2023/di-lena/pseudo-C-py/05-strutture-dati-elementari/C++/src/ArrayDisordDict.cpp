@@ -1,5 +1,4 @@
 #include "./ArrayDisordDict.hpp"
-using namespace std;
 
 //costruttore
 template <typename KeyType, typename DataType>
@@ -27,14 +26,14 @@ DataType ArrayDisordDict<KeyType, DataType>::Search(KeyType key) {
 }
 
 template <typename KeyType, typename DataType>
-void ArrayDisordDict<KeyType, DataType>::Insert(KeyType key, DataType e) {
+void ArrayDisordDict<KeyType, DataType>::Insert(KeyType key, DataType data) {
 	int i = linsearch(key);
 	if (i == -1) {
 		this->size ++;
 		i = this->size;
 	}
 	//this->A.push_back(make_pair(key, data));
-	this->A.push_back({key, data});
+	this->A.push_back(make_pair(key, data));
 }
 
 template <typename KeyType, typename DataType>

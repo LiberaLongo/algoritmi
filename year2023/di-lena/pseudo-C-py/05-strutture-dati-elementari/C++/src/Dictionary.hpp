@@ -18,7 +18,7 @@ class Dictionary{
 * - Verifica con ricerca lineare se k è presente nell’array
 * - Se k è nell’array, sostituisce i dati
 * - Altrimenti, inserisce la coppia (k, d) nella prima posizione libera*/
-		virtual void Insert(KeyType key, DataType e) = 0;
+		virtual void Insert(KeyType key, DataType data) = 0;
 /* delete(Key k)
 Cerca k tramite ricerca lineare
 Se k è nell’array, rimuove la coppia (k, d) dall’array
