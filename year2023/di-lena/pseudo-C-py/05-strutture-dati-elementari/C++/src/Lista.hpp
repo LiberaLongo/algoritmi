@@ -45,8 +45,6 @@ public:
 	struct Elem<Tipo>* remove(struct Elem<Tipo>* p);
 
 	//metodi ausiliari
-	//calcola la lunghezza della ListaParent (e serve per non fare errori)
-	int lunghezza(void);
 	//inserisci in testa
 	void insert_head(Tipo v);
 	//inserisci in coda
@@ -56,6 +54,8 @@ public:
 	//rimuovi in coda
 	void remove_tail(void);
 
+	//calcola la lunghezza della ListaParent (e serve per non fare errori)
+	int lunghezza(void);
 	//cerca v scorrendo la ListaParent
 	struct Elem<Tipo>* search(Tipo v);
 

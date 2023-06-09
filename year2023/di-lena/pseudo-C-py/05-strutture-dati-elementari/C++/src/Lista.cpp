@@ -3,6 +3,8 @@ using namespace std;
 
 #include "./Lista.hpp"
 
+#define for_each(iter) for (struct Elem<Tipo> *iter = this->head(); !this->finished(iter); iter = this->next(iter))
+
 //costruttore e distruttore
 template <typename Tipo>
 Lista<Tipo>::Lista(void)
@@ -102,27 +104,6 @@ struct Elem<Tipo> *Lista<Tipo>::remove(struct Elem<Tipo> *p)
 }
 
 //metodi ausiliari
-//calcola la lunghezza della Lista (e serve per non fare errori)
-template <typename Tipo>
-int Lista<Tipo>::lunghezza(void)
-{
-	//conta il numero di elementi
-	int conta = 0;
-	if (!(this->empty()))
-	{
-		//primo elemento utile non la sentinella
-		struct Elem<Tipo> *iter = this->head();
-		//se non vuota e non finita
-		while (!(this->finished(iter)))
-		{
-			//incremento la conta
-			conta++;
-			//passo al successivo
-			iter = this->next(iter);
-		}
-	}
-	return conta;
-}
 //inserisci in testa
 template <typename Tipo>
 void Lista<Tipo>::insert_head(Tipo v)
@@ -148,28 +129,27 @@ void Lista<Tipo>::remove_tail(void)
 	this->remove(this->tail());
 }
 
+//calcola la lunghezza della Lista (e serve per non fare errori)
+template <typename Tipo>
+int Lista<Tipo>::lunghezza(void)
+{
+	int conta = 0;
+	for_each(iter) {
+		conta ++;
+	}
+	return conta;
+}
+
 //cerca v scorrendo la Lista
 template <typename Tipo>
 struct Elem<Tipo> *Lista<Tipo>::search(Tipo v)
 {
-	struct Elem<Tipo> *find = nullptr;
-	if (!(this->empty()))
-	{
-		struct Elem<Tipo> *iter = this->head();
-		bool trovato = false;
-		//se non finita, oppure lo hai trovato
-		while (!(this->finished(iter)) || !trovato)
-		{
-			//se lo trovi
-			if (this->read(iter) == v)
-			{
-				find = iter;
-				trovato = true;
-			}
-			iter = this->next(iter);
+	for_each(iter) {
+		if(this->read(iter) == v) {
+			return iter;
 		}
 	}
-	return find;
+	return NULL;
 }
 
 // stampe
@@ -177,20 +157,11 @@ template <typename Tipo>
 void Lista<Tipo>::print(void)
 {
 	cout << "Lista : [ ";
-	if (!(this->empty()))
-	{
-		//primo elemento utile non la sentinella
-		struct Elem<Tipo> *iter = this->head();
-		//se non vuota e non finita
-		while (!(this->finished(iter)))
-		{
-			//stampo elemento
-			cout << this->read(iter);
-			//passo al successivo e stampo freccia
-			iter = this->next(iter);
-			if (!(this->finished(iter)))
-				cout << " --> ";
-		}
+	for_each(iter) {
+		//stampo elemento
+		cout << this->read(iter);
+		if (!(this->finished(this->next(iter))))
+			cout << " --> ";
 	}
 	cout << " ]" << endl;
 }
@@ -201,8 +172,3 @@ void Lista<Tipo>::print(string str)
     cout << str << "\t";
 	this->print();
 }
-/*
-Nota1: funzioni ispirate al libro algorazmi (lol)
-Nota2: NON sappiamo giocare con i puntatori
-Nota3: deferenziare?
-*/
