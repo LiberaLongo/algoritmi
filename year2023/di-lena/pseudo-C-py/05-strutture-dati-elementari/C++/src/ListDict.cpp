@@ -32,7 +32,7 @@ void ListDict<KeyType, DataType>::insert(KeyType key, DataType data) {
 	//così c'è ripetizione di chiavi...ma costo O(1)
 	this->list.insert_head(make_pair(key, data));
 	*/
-	//in questo modo non c'è ripetizioni di chiavi ma il costo non è O(1);
+	//in questo modo non c'è ripetizioni di chiavi ma il costo è O(n);
 	Elem<pair<KeyType,DataType>> *res = this->search_ptr(key);
 	if( res == NULL)
 		this->list.insert_head(make_pair(key, data));

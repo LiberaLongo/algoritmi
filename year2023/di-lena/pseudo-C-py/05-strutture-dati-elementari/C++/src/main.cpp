@@ -17,6 +17,14 @@ template class ListDict<int, string>;
 #include "./Lista.cpp"
 template class Lista<int>;
 
+#include "./Stack.hpp"
+#include "./Stack.cpp"
+template class Stack<char>;
+
+#include "./Queue.hpp"
+#include "./Queue.cpp"
+template class Queue<char>;
+
 void test_lista() {
 	Lista<int> lista = Lista<int>();
 	cout << "vuota? " << lista.empty() << endl;
@@ -33,6 +41,64 @@ void test_lista() {
 	cout << "lunghezza: " << lista.lunghezza() << endl;
 	lista.remove_head();
 	lista.print("remove head");
+}
+void test_stack() {
+	Stack<char> s = Stack<char>();
+	//esercizio 7... EAS*Y*QUE***ST***IO*N***
+	s.print();
+	s.push('E'); s.push('A'); s.push('S');
+	s.print();
+	cout << s.pop() << endl;
+	s.print();
+	s.push('Y');
+	s.print();
+	cout << s.pop() << endl;
+	s.print();
+	s.push('Q'); s.push('U'); s.push('E');
+	s.print();
+	cout << s.pop() << s.pop() << s.pop() << endl;
+	s.print();
+	s.push('S'); s.push('T');
+	s.print();
+	cout << s.pop() << s.pop() << s.pop() << endl;
+	s.print();
+	s.push('I'); s.push('O');
+	s.print();
+	cout << s.pop() << endl;
+	s.print();
+	s.push('N');
+	s.print();
+	cout << s.pop() << s.pop() << s.pop() << endl;
+	s.print();
+}
+void test_queue() {
+	Queue<char> q = Queue<char>();
+	//esercizio 7... EAS*Y*QUE***ST***IO*N*** ma fatto con le code (FIFO)
+	q.print();
+	q.enqueue('E'); q.enqueue('A'); q.enqueue('S');
+	q.print();
+	cout << q.dequeue() << endl;
+	q.print();
+	q.enqueue('Y');
+	q.print();
+	cout << q.dequeue() << endl;
+	q.print();
+	q.enqueue('Q'); q.enqueue('U'); q.enqueue('E');
+	q.print();
+	cout << q.dequeue() << q.dequeue() << q.dequeue() << endl;
+	q.print();
+	q.enqueue('S'); q.enqueue('T');
+	q.print();
+	cout << q.dequeue() << q.dequeue() << q.dequeue() << endl;
+	q.print();
+	q.enqueue('I'); q.enqueue('O');
+	q.print();
+	cout << q.dequeue() << endl;
+	q.print();
+	q.enqueue('N');
+	q.print();
+	cout << q.dequeue() << q.dequeue() << q.dequeue() << endl;
+	q.print();
 }
 
 void dictionary() {
@@ -67,6 +133,8 @@ void dictionary() {
 }
 
 int main(int argc, char *argv[]) {
-	dictionary();
+	//dictionary();
 	//test_lista();
+	//test_stack();
+	test_queue();
 }

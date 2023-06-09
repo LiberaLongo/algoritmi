@@ -2,6 +2,7 @@
 #ifndef LISTA_HPP
 #define LISTA_HPP
 
+#include <iostream>
 #include <string>
 using namespace std;
 
@@ -50,9 +51,9 @@ public:
 	//inserisci in coda
 	void insert_tail(Tipo v);
 	//rimuovi in testa
-	void remove_head(void);
+	struct Elem<Tipo>* remove_head(void);
 	//rimuovi in coda
-	void remove_tail(void);
+	struct Elem<Tipo>* remove_tail(void);
 
 	//calcola la lunghezza della ListaParent (e serve per non fare errori)
 	int lunghezza(void);

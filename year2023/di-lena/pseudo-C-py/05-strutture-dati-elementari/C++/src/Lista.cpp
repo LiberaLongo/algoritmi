@@ -94,11 +94,11 @@ struct Elem<Tipo> *Lista<Tipo>::insert(struct Elem<Tipo> *p, Tipo v)
 }
 //
 template <typename Tipo>
-struct Elem<Tipo> *Lista<Tipo>::remove(struct Elem<Tipo> *p)
+struct Elem<Tipo>* Lista<Tipo>::remove(struct Elem<Tipo> *p)
 {
 	p->prev->next = p->next;
 	p->next->prev = p->prev;
-	struct Elem<Tipo> *temp = p->next;
+	struct Elem<Tipo> *temp = p; //pk prima era 'temp = p->next;' ?
 	delete p;
 	return temp;
 }
@@ -118,15 +118,15 @@ void Lista<Tipo>::insert_tail(Tipo v)
 }
 //rimuovi in testa
 template <typename Tipo>
-void Lista<Tipo>::remove_head(void)
+struct Elem<Tipo>* Lista<Tipo>::remove_head(void)
 {
-	this->remove(this->head());
+	return this->remove(this->head());
 }
 //rimuovi in coda
 template <typename Tipo>
-void Lista<Tipo>::remove_tail(void)
+struct Elem<Tipo>* Lista<Tipo>::remove_tail(void)
 {
-	this->remove(this->tail());
+	return this->remove(this->tail());
 }
 
 //calcola la lunghezza della Lista (e serve per non fare errori)
@@ -156,7 +156,7 @@ struct Elem<Tipo> *Lista<Tipo>::search(Tipo v)
 template <typename Tipo>
 void Lista<Tipo>::print(void)
 {
-	cout << "Lista : [ ";
+	cout << ": [ ";
 	for_each(iter) {
 		//stampo elemento
 		cout << this->read(iter);
