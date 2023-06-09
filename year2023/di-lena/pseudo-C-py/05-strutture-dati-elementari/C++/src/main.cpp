@@ -1,5 +1,3 @@
-#include <unistd.h>
-
 //per i template servono: HPP, CPP, template class NOMECLASSE<TIPI USATI>
 
 //dizionari implementati in vario modo
@@ -52,11 +50,11 @@ void test_lista() {
 	lista.remove_head();
 	lista.print("remove head");
 #endif
-	lista.insert_head(1); lista.print();
-	l2.insert_head(2); l2.print();
+	lista.insert_head(2); lista.insert_head(1); lista.print();
+	l2.insert_head(4); l2.insert_head(3); l2.print();
 	lista.append(l2);
-	usleep(1000);
 	lista.print();
+	l2.print();
 }
 void test_stack() {
 	Stack<char> s = Stack<char>();

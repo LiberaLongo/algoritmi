@@ -151,11 +151,15 @@ struct Elem<Tipo> *Lista<Tipo>::search(Tipo v)
 
 template <typename Tipo>
 void Lista<Tipo>::append(Lista<Tipo> l) {
-	/*Elem<Tipo> *tmp = l.head();
-	while(! l.finished(tmp)) {
-		this->insert_tail(l.read(tmp));
-		tmp = l.next(tmp);
-	}*/
+	//fix pointers of lista and l to do the append
+	l.head()->prev = this->tail();
+	this->tail()->next = l.head();
+	l.tail()->next = this->testa;
+	this->testa->prev = l.tail();
+	//... now l is broken ...
+	l.testa->prev = l.testa;
+	l.testa->next = l.testa;
+	//everything is fine now
 }
 
 // stampe
