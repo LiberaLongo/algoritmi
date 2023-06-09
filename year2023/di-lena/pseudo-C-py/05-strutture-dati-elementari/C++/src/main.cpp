@@ -1,6 +1,8 @@
+#include <unistd.h>
 
 //per i template servono: HPP, CPP, template class NOMECLASSE<TIPI USATI>
 
+//dizionari implementati in vario modo
 #include "./ArrayDisordDict.hpp"
 #include "./ArrayDisordDict.cpp"
 template class ArrayDisordDict<int, string>;
@@ -13,6 +15,7 @@ template class ArrayOrdDict<int, string>;
 #include "./ListDict.cpp"
 template class ListDict<int, string>;
 
+//basati su lista
 #include "./Lista.hpp"
 #include "./Lista.cpp"
 template class Lista<int>;
@@ -25,8 +28,15 @@ template class Stack<char>;
 #include "./Queue.cpp"
 template class Queue<char>;
 
+//alberi
+#include "./Tree.hpp"
+#include "./Tree.cpp"
+template class Tree<int>;
+
 void test_lista() {
 	Lista<int> lista = Lista<int>();
+	Lista<int> l2 = Lista<int>();
+#if 0
 	cout << "vuota? " << lista.empty() << endl;
 	lista.insert_head(3);
 	cout << "\t\t";
@@ -41,6 +51,12 @@ void test_lista() {
 	cout << "lunghezza: " << lista.lunghezza() << endl;
 	lista.remove_head();
 	lista.print("remove head");
+#endif
+	lista.insert_head(1); lista.print();
+	l2.insert_head(2); l2.print();
+	lista.append(l2);
+	usleep(1000);
+	lista.print();
 }
 void test_stack() {
 	Stack<char> s = Stack<char>();
@@ -132,9 +148,14 @@ void dictionary() {
 	diz.print();
 }
 
+void test_alberi() {
+
+}
+
 int main(int argc, char *argv[]) {
 	//dictionary();
-	//test_lista();
+	test_lista();
 	//test_stack();
-	test_queue();
+	//test_queue();
+	test_alberi();
 }

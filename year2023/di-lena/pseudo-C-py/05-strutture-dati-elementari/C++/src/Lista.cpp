@@ -1,6 +1,3 @@
-#include <iostream>
-using namespace std;
-
 #include "./Lista.hpp"
 
 #define for_each(iter) for (struct Elem<Tipo> *iter = this->head(); !this->finished(iter); iter = this->next(iter))
@@ -150,6 +147,15 @@ struct Elem<Tipo> *Lista<Tipo>::search(Tipo v)
 		}
 	}
 	return NULL;
+}
+
+template <typename Tipo>
+void Lista<Tipo>::append(Lista<Tipo> l) {
+	/*Elem<Tipo> *tmp = l.head();
+	while(! l.finished(tmp)) {
+		this->insert_tail(l.read(tmp));
+		tmp = l.next(tmp);
+	}*/
 }
 
 // stampe

@@ -60,6 +60,8 @@ public:
 	//cerca v scorrendo la ListaParent
 	struct Elem<Tipo>* search(Tipo v);
 
+	void append(Lista<Tipo> l);
+
 	//stampe
 	void print(void);
     void print(string str);
