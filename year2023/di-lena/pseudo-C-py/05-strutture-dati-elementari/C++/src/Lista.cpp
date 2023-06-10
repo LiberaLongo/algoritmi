@@ -95,9 +95,7 @@ struct Elem<Tipo>* Lista<Tipo>::remove(struct Elem<Tipo> *p)
 {
 	p->prev->next = p->next;
 	p->next->prev = p->prev;
-	struct Elem<Tipo> *temp = p; //pk prima era 'temp = p->next;' ?
-	delete p;
-	return temp;
+	return p;
 }
 
 //metodi ausiliari

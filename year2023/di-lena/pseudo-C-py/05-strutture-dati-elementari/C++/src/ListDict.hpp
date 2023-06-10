@@ -8,7 +8,6 @@
 #include <utility>
 using namespace std;
 
-
 template <typename KeyType, typename DataType>
 class ListDict
 {

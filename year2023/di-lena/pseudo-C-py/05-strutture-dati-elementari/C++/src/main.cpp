@@ -147,7 +147,7 @@ void dictionary() {
 }
 
 void test_alberi() {
-
+	Tree<int> t = Tree<int>(1);
 }
 
 int main(int argc, char *argv[]) {
