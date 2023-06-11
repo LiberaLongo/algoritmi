@@ -2,15 +2,13 @@
 #ifndef TREE_BINARIO_HPP
 #define TREE_BINARIO_HPP
 
-#include "./Lista.hpp"
+#include "./Node.hpp"
 
 template <typename Type>
 class Tree
 {
 private:
-	Type info;
-	Tree<Type> *parent;
-	//Lista<Tree<Type>> childrens;
+	Node<Type> radix;
 public:
 	//costruttore e distruttore
 	Tree() {};
@@ -18,7 +16,7 @@ public:
 	virtual ~Tree(void) {};
 
 	//albero
-	void insert_child(Tree<Type> child);
+	void insert_child(Node<Type> child);
 
 	//stampe
 	void print(void);

@@ -27,6 +27,10 @@ template class Stack<char>;
 template class Queue<char>;
 
 //alberi
+#include "./Node.hpp"
+#include "./Node.cpp"
+template class Node<int>;
+
 #include "./Tree.hpp"
 #include "./Tree.cpp"
 template class Tree<int>;
@@ -147,7 +151,8 @@ void dictionary() {
 }
 
 void test_alberi() {
-	Tree<int> t = Tree<int>(1);
+	Node<int> n = Node<int>(1);
+	//Tree<int> t = Tree<int>(1);
 }
 
 int main(int argc, char *argv[]) {
