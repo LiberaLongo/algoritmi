@@ -1,15 +1,31 @@
 #!/bin/env/python3
 
 import node;
+import queue;
 
 class tree:
 	def __init__(self, info):
 		self.radice = node.node(info);
 #tree
-	def insertNode(self, parent, info):
+	def insert(self, parent, info):
 		return parent.insertChildren(node.node(info));
+
+	def insertTree(self, parent, tree):
+		return parent.insertChildren(tree.radice);
 	
 #visite
+	def visitaBFS(self):
+		list = [];
+		Q = queue.queue();
+		if self.radice:
+			Q.enqueue(self.radice);
+		while not Q.isEmpty():
+			x = Q.dequeue();
+			list.append(x.info); #visit(x)
+			for child in x.childrens:
+				Q.enqueue(child);
+		return list;
+		
 	def visitaDFS(self, ordine, node, list):
 		if node:
 			match ordine:
@@ -23,8 +39,8 @@ class tree:
 					first_or_none = node.childrens[0] if node.childrens else None;
 					list = self.visitaDFS(ordine, first_or_none, list);
 					list.append(node.info);
-					next_or_none = node.childrens[node.index+1] if len(node.childrens) > node.index else None;
-					list = self.visitaDFS(ordine, next_or_none, list);
+					for other_child in node.childrens[1:]:
+						list = self.visitaDFS(ordine, other_child, list);
 				case 'post':
 	# post-visita
 					for child in node.childrens:
@@ -37,19 +53,14 @@ class tree:
 	def visitaDepthFS(self, ordine):
 		print(f'{ordine}-visita:\t', self.visitaDFS(ordine, self.radice, []));
 
+	def visite(self):
+		self.visitaDepthFS('pre');
+		self.visitaDepthFS('in');
+		self.visitaDepthFS('post');
+		print('\tBFS:\t', self.visitaBFS());
+
 #print
 	def print(self):
-		print('Tree:', end='');
+		print('\nTree: ', end='');
 		self.radice.print();
 		print();
-
-T = tree('radice');
-T.print();
-n = T.insertNode(T.radice, 'padre');
-T.insertNode(T.radice, 'fratello');
-T.insertNode(n, 'figlio');
-T.insertNode(n, 'secondo')
-T.print();
-T.visitaDepthFS('pre');
-T.visitaDepthFS('in');
-T.visitaDepthFS('post');

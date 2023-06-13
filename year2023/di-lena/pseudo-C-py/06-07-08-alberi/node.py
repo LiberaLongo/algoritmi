@@ -18,7 +18,7 @@ class node:
 	def print(self):
 		print(f'({self.info}', end='');
 		if self.childrens:
-			print(', childrens:[ ', end='');
+			print(' :[ ', end='');
 			for node in self.childrens:
 				if node.index > 0:
 					print(' --> ', end='');
