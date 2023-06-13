@@ -10,6 +10,7 @@ class node:
 
 #childerns
 	def insertChildren(self, node):
+		node.parent = self;
 		node.index = len(self.childrens);
 		self.childrens.append(node);
 		return node;
