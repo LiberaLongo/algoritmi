@@ -27,11 +27,11 @@ class tree:
 					list = self.visitaDFS(ordine, child, list);
 				list.append(node.info);
 			case _:
-				print('Error! Usage: ordine = \'pre\', \'in\', \'post\'');
+				print('Error! Usage: ordine = \'pre\' | \'in\' | \'post\'');
 		return list;
 	
 	def visitaDepthFS(self, ordine):
-		print(f'{ordine}-visita: ', T.visitaDFS(ordine, T.radice, []));
+		print(f'{ordine}-visita:\t', T.visitaDFS(ordine, self.radice, []));
 
 #print
 	def print(self):

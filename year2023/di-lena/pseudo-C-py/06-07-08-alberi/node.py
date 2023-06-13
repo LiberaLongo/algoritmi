@@ -5,8 +5,7 @@ class node:
 		self.info = info;
 		self.parent = None;
 		self.childrens = [];
-		self.index = 0;
-		self.tree = None; #albero a cui questo noto è associato
+		self.index = 0; #a index used for small stuff... it can be removed...
 
 #childerns
 	def insertChildren(self, node):
@@ -17,9 +16,9 @@ class node:
 
 #print
 	def print(self):
-		print(f'({self.info}, {self.index}', end='');
+		print(f'({self.info}', end='');
 		if self.childrens:
-			print(', children:[ ', end='');
+			print(', childrens:[ ', end='');
 			for node in self.childrens:
 				if node.index > 0:
 					print(' --> ', end='');
