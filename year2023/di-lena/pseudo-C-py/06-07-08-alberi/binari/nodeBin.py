@@ -1,6 +1,6 @@
 #!/bin/env/python3
 
-class node:
+class nodeBin:
 	def __init__(self, info):
 		self.info = info;
 		self.parent = None;
@@ -12,6 +12,7 @@ class node:
 		node.parent = self;
 		self.left = node;
 		return node;
+
 	def insertRight(self, node):
 		node.parent = self;
 		self.right = node;
@@ -27,4 +28,3 @@ class node:
 			print(' r:', end='');
 			self.right.print();
 		print('])', end='');
-

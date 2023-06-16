@@ -5,12 +5,12 @@ import queue;
 
 class treeBin:
 	def __init__(self, info):
-		self.radice = nodeBin.node(info);
+		self.radice = nodeBin.nodeBin(info);
 #tree
 	def insertLeft(self, parent, info):
-		return parent.insertLeft(nodeBin.node(info));
+		return parent.insertLeft(nodeBin.nodeBin(info));
 	def insertRight(self, parent, info):
-		return parent.insertRight(nodeBin.node(info));
+		return parent.insertRight(nodeBin.nodeBin(info));
 
 	def insertTreeLeft(self, parent, tree):
 		return parent.insertLeft(tree.radice);
