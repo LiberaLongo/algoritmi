@@ -1,4 +1,4 @@
-#!/bin/env/python3
+#!/usr/bin/env python3
 
 # queue in pthon from geeksforgeeks...
 # https://www.geeksforgeeks.org/queue-in-python/

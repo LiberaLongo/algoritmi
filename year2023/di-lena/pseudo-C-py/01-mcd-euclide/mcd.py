@@ -1,4 +1,4 @@
-#!/bin/env/python3
+#!/usr/bin/env python3
 
 #algoritmo di euclide per massimo comune divisore
 #tra x e y (x >= y)

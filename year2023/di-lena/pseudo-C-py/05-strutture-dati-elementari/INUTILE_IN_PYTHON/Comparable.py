@@ -1,4 +1,4 @@
-#!/bin/env/python3
+#!/usr/bin/env python3
 
 #Comparable type...
 # https://betterprogramming.pub/how-to-use-comparable-classes-in-python-a897f9bccf25

@@ -38,6 +38,7 @@ class treeABR:
 				tmp = tmp.left;
 			else:
 				tmp = tmp.right;
+		print(f'i don\'t find {key} in the tree.');
 		return None;		
 
 #delete:
@@ -45,35 +46,45 @@ class treeABR:
 #case 2: il nodo da rimuovere ha un solo figlio u
 #case 3: il nodo da rimuvere ha due figli
 	def deleteNode(self, node):
+		print(f'deleteNode({node.key})');
 		p = node.parent;
 		if p:	# node is not the root node
+			print('non root');
 			if not node.left and not node.right: # case 1
+				print('case 1');
 				if p.left == node:
 					p.left = None;
 				else:
 					p.right = None;
 			elif node.right: # case 2
+				print('case 2');
 				if p.left == node:
 					p.left = node.right;
 				else:
 					p.right = node.right;
 			elif node.left: # case 3
+				print('case 3');
 				if p.left == node:
 					p.left = node.left;
 				else:
 					p.right = node.left;
 		else: #node is the root node
+			print('root case');
 			if node.right: # case 2
 				self.radice = node.right;
 			else: # case 1 or case 2
 				self.radice = node.left;			
 
 	def delete(self, key):
+		print(f'delete({key})');
 		v = self.search(key);
 		if v:
 			if not v.left or not v.right: #case 1 or 2
+				print('case 1 or 2');
+				#why here no parent is checked?
 				self.deleteNode(v);
 			else:	#case 3
+				print('case 3');
 				u = self.predecessor(v);
 				v.key = u.key;
 				v.data = u.data;

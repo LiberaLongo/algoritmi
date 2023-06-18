@@ -1,4 +1,4 @@
-#!/bin/env/python3
+#!/usr/bin/env python3
 
 import sys, math;
 from timeit import default_timer as timer;

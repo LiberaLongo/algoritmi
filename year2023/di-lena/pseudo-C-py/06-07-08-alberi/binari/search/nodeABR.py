@@ -1,4 +1,4 @@
-#!/bin/env/python3
+#!/usr/bin/env python3
 
 class nodeABR:
 	def __init__(self, key, data=None):

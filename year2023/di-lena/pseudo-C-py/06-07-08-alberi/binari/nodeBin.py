@@ -1,4 +1,4 @@
-#!/bin/env/python3
+#!/usr/bin/env python3
 
 class nodeBin:
 	def __init__(self, info):

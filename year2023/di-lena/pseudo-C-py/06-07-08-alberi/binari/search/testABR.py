@@ -2,28 +2,24 @@
 
 import treeABR;
 
+# 2
+
 T = treeABR.treeABR();
-T.insert(5, 'five');
-T.insert(2, 'two');
-T.insert(7, 'seven');
-T.insert(1, 'one');
-T.insert(3, 'three');
-T.insert(4, 'four');
-T.insert(6, 'six');
-T.insert(8, 'eight');
-T.insert(9, 'nine');
+T.insert(11, '11');
+T.insert(8, '8');
+T.insert(13, '13');
+T.insert(6, '6');
+T.insert(9, '9');
+T.insert(15, '15');
+T.insert(7, '7');
+T.insert(10, '10');
 T.print();
 T.visite();
 #delete test
-T.delete(10);
+search_key = 10;
+n = T.search(search_key);
+print(f'n has key {n.key}, and parent {n.parent.key}.');
+T.delete(9);
 T.print();
-max = T.max(T.radice)
-print(f'il massimo è {max.key}, e suo padre è {max.parent.key}');
-T.delete(8); #case 2
-T.print();
-max = T.max(T.radice)
-print(f'il massimo è {max.key}, e suo padre è {max.parent.key}');
-T.delete(9); #case 1
-T.print();
-T.delete(7); #case 3
-T.print();
+n = T.search(search_key);
+print(f'n has key {n.key}, and parent {n.parent.key}.');
