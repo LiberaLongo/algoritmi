@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 
-import nodeABR;
+import nodeAVL;
 import queue;
 
-class treeABR:
+class treeAVL:
 	def __init__(self):
 		self.radice = None;
 
-# dictionary
+# dictionary ABR (da modificare in AVL)
 	def insert(self, key, data=None):
-		n = nodeABR.nodeABR(key, data); #node
+		n = nodeAVL.nodeAVL(key, data); #node
 		p = None;		 #parent
 		s = self.radice;
 		#search position
@@ -190,3 +190,48 @@ class treeABR:
 		print('\nTree: ', end='');
 		self.radice.print();
 		print();
+
+# AdelsonVelskyLandis modifications to ABR
+	def rotateDX(self, node): # costo O(1)
+		#i call u 'node' and v 'root'
+		if node and node.left:
+			root = node.left;
+			root.parent = node.parent;
+			node.parent = root;
+			node.left = root.right;
+			root.right = node;
+			if not root.parent: #root (v) is the new root
+				self.radice = root;
+			else:				#parent update
+				if root.parent.left == node:
+					root.parent.left = root;
+				else:
+					root.parent.right = root;
+
+	#rotateSX è simmetrica rispetto a rotateDX (speriamo di implementarla bene...)
+	def rotateSX(self, node): #costo O(1)
+		if node and node.right:
+			root = node.right;
+			root.parent = node.parent;
+			node.parent = root;
+			node.right = root.left;
+			root.left = node;
+			if not root.parent: #root (v) is the new root
+				self.radice = root;
+			else:				#parent update
+				if root.parent.right == node:
+					root.parent.right = root;
+				else:
+					root.parent.left = root;
+
+	def balance(self, node): #costo O(1)
+		betha_u = node.betha();
+		if node and abs(u) == 2:
+			if betha_u == 2:
+				if node.left.betha() == -1: #sbilanciamento SD
+					self.rotateSX(node.left);
+				self.rotateDX(self, node);
+			else:
+				if node.right.betha() == 1: #sbilanciamento DS
+					self.rotateDX(node.right);
+				self.rotateSX(node);

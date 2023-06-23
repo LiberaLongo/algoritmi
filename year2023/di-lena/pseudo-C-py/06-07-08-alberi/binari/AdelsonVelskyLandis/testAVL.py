@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-import treeABR;
+import treeAVL;
 
 # 2
 
-T = treeABR.treeABR();
+T = treeAVL.treeAVL();
 T.insert(11, '11');
 T.insert(8, '8');
 T.insert(13, '13');
