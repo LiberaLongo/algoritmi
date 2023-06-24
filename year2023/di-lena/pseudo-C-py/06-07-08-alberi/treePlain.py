@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-
-import node;
 import myQueue as queue;
 
 #per disegnare
@@ -8,16 +5,8 @@ import networkx as nx;
 import matplotlib.pyplot as plt;
 # eseguire il comando 'pip install networkx matplotlib'
 
-class tree:
-	def __init__(self, info):
-		self.radice = node.node(info);
-#tree
-	def insert(self, parent, info):
-		return parent.insertChildren(node.node(info));
+class treePlain(object):
 
-	def insertTree(self, parent, tree):
-		return parent.insertChildren(tree.radice);
-	
 #visite
 	def visitaBFS(self):
 		list = [];
@@ -26,9 +15,10 @@ class tree:
 			Q.enqueue(self.radice);
 		while not Q.isEmpty():
 			x = Q.dequeue();
-			list.append(x.info); #visit(x)
+			list.append(x.key); #visit(x)
 			for child in x.childrens:
-				Q.enqueue(child);
+				if child:
+					Q.enqueue(child);
 		return list;
 		
 	def visitaDFS(self, ordine, node, list):
@@ -36,21 +26,21 @@ class tree:
 			match ordine:
 				case 'pre':
 	# pre-visita
-					list.append(node.info);
+					list.append(node.key);
 					for child in node.childrens:
 						list = self.visitaDFS(ordine, child, list);
 				case 'in':
 	# in-visita
 					first_or_none = node.childrens[0] if node.childrens else None;
 					list = self.visitaDFS(ordine, first_or_none, list);
-					list.append(node.info);
+					list.append(node.key);
 					for other_child in node.childrens[1:]:
 						list = self.visitaDFS(ordine, other_child, list);
 				case 'post':
 	# post-visita
 					for child in node.childrens:
 						list = self.visitaDFS(ordine, child, list);
-					list.append(node.info);
+					list.append(node.key);
 				case _:
 					print('Error! Usage: ordine = \'pre\' | \'in\' | \'post\'');
 		return list;
@@ -58,31 +48,30 @@ class tree:
 	def visitaDepthFS(self, ordine):
 		print(f'{ordine}-visita:\t', self.visitaDFS(ordine, self.radice, []));
 
-	def visite(self):
+	def visit(self):
 		self.visitaDepthFS('pre');
 		self.visitaDepthFS('in');
 		self.visitaDepthFS('post');
 		print('\tBFS:\t', self.visitaBFS());
-
 #print
-	def print(self):
-		print('\nTree: ', end='');
-		self.radice.print();
-		print();
+	def __str__(self):
+		return f'tree: {self.radice}';
 
 #draw
 	def drawGraph(self, Graph, node):
 		#inserisci ogni nodo e ogni arco
 		if node:
 			for child in node.childrens:
-				Graph.add_node(child.info);
-				Graph.add_edge(node.info, child.info);
-				self.drawGraph(Graph, child);
+				if child:
+					Graph.add_node(child.key);
+					Graph.add_edge(node.key, child.key);
+					self.drawGraph(Graph, child);
 
 	def draw(self):
 		#voglio disegnare quindi uso le cose già fatte... ok?
-		G = nx.Graph();
-		G.add_node(self.radice.info);
-		self.drawGraph(G, self.radice);
-		nx.draw(G, with_labels=True);
-		plt.show();
+		if self.radice:
+			G = nx.DiGraph();
+			G.add_node(self.radice.key);
+			self.drawGraph(G, self.radice);
+			nx.draw(G, with_labels=True);
+			plt.show();

@@ -1,0 +1,4 @@
+(already done trees https://medium.com/swlh/making-data-trees-in-python-3a3ceb050cfd)
+
+classed and subclasses in python
+https://medium.com/swlh/classes-subclasses-in-python-12b6013d9f3
