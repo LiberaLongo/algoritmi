@@ -157,8 +157,8 @@ void test_alberi() {
 
 int main(int argc, char *argv[]) {
 	//dictionary();
-	test_lista();
-	//test_stack();
-	//test_queue();
-	test_alberi();
+	//test_lista();
+	test_stack();
+	test_queue();
+	//test_alberi();
 }

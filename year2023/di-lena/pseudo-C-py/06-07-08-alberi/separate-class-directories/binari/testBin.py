@@ -29,3 +29,4 @@ T.insertTreeRight(T.radice, T2);
 T.print();
 print(f'There are {len(T)} nodes.');
 T.visite();
+T.draw();

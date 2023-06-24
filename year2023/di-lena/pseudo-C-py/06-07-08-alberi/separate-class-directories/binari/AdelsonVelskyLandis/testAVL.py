@@ -16,11 +16,6 @@ T.insert(10, '10');
 T.print();
 T.visite();
 #delete test
-search_key = 10; #già testati 10
-n = T.search(search_key);
-print(f'n has key {n.key}, and parent {n.parent.key}.');
-T.delete(10); #già testati: 9
+#T.delete(10);
 T.print();
-n = T.search(search_key);
-print(f'n has key {n.key}, and parent {n.parent.key}.');
-
+T.draw();

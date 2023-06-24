@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 
 import nodeBin;
-import queue;
+import myQueue as queue;
+
+#per disegnare
+import networkx as nx;
+import matplotlib.pyplot as plt;
+# eseguire il comando 'pip install networkx matplotlib'
 
 class treeBin:
 	def __init__(self, info):
@@ -81,3 +86,25 @@ class treeBin:
 		print('\nTree: ', end='');
 		self.radice.print();
 		print();
+
+#draw
+	def drawGraph(self, Graph, node):
+		#inserisci ogni nodo e ogni arco
+		if node:
+			if node.left:
+				Graph.add_node(node.left.info);
+				Graph.add_edge(node.info, node.left.info);
+				self.drawGraph(Graph, node.left);
+			if node.right:
+				Graph.add_node(node.right.info);
+				Graph.add_edge(node.info, node.right.info);
+				self.drawGraph(Graph, node.right);
+
+	def draw(self):
+		#voglio disegnare quindi uso le cose già fatte... ok?
+		G = nx.Graph();
+		G.add_node(self.radice.info);
+		self.drawGraph(G, self.radice);
+		nx.draw(G, with_labels=True);
+		plt.show();
+		

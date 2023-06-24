@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 
 import nodeABR;
-import queue;
+import myQueue as queue;
+
+#per disegnare
+import networkx as nx;
+import matplotlib.pyplot as plt;
+# eseguire il comando 'pip install networkx matplotlib'
 
 class treeABR:
 	def __init__(self):
@@ -190,3 +195,24 @@ class treeABR:
 		print('\nTree: ', end='');
 		self.radice.print();
 		print();
+
+#draw
+	def drawGraph(self, Graph, node):
+		#inserisci ogni nodo e ogni arco
+		if node:
+			if node.left:
+				Graph.add_node(node.left.key);
+				Graph.add_edge(node.key, node.left.key);
+				self.drawGraph(Graph, node.left);
+			if node.right:
+				Graph.add_node(node.right.key);
+				Graph.add_edge(node.key, node.right.key);
+				self.drawGraph(Graph, node.right);
+
+	def draw(self):
+		#voglio disegnare quindi uso le cose già fatte... ok?
+		G = nx.Graph();
+		G.add_node(self.radice.key);
+		self.drawGraph(G, self.radice);
+		nx.draw(G, with_labels=True);
+		plt.show();

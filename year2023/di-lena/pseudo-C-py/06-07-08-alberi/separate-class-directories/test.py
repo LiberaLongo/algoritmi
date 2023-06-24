@@ -28,3 +28,4 @@ T.insertTree(T.radice, T1);
 T.insertTree(T.radice, T2);
 T.print();
 T.visite();
+T.draw();
