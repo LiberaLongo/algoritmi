@@ -3,10 +3,12 @@ import nodePlain;
 class nodeBin(nodePlain.nodePlain):
 	def __init__(self, key, data=None):
 		super().__init__(key, data);
+		self.height = 1; #(not updated) except for AVL tree...
 		self.childrens = [None, None];
 
 	def addChild(self, where, key, data=None):
 		new = nodeBin(key, data);
+		new.parent = self;
 		if where:
 			self.setLeft(new);
 		else:
@@ -19,10 +21,26 @@ class nodeBin(nodePlain.nodePlain):
 		return self.childrens[1];
 
 	def setLeft(self, node):
-		if node:
-			node.parent = self;
-			self.childrens[0] = node;
+		self.childrens[0] = node;
 	def setRight(self, node):
-		if node:
-			node.parent = self;
-			self.childrens[1] = node;
+		self.childrens[1] = node;
+
+# AdelsonVelskyLandis (AVL) modifications to ABR
+	def updateHeight(self): #cost O(1)
+		if self:
+			nh = lh = rh = 0;
+			if self.getLeft():
+				lh = self.getLeft().height;
+			if self.getRight():
+				rh = self.getRight().height;
+			if self.getLeft() or self.getRight():
+				nh = max(lh, rh) +1;
+			self.height = nh;
+
+	def betha(self): #cost O(1)
+		lh = rh = 0;
+		if self.getLeft():
+			lh = self.getLeft().height;
+		if self.getRight():
+			rh = self.getRight().height;
+		return lh - rh;

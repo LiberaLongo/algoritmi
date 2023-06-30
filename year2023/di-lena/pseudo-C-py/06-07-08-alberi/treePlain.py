@@ -75,3 +75,9 @@ class treePlain(object):
 			self.drawGraph(G, self.radice);
 			nx.draw(G, with_labels=True);
 			plt.show();
+
+#show => print, visit, draw
+	def show(self):
+		self.print();
+		self.visit();
+		self.draw();

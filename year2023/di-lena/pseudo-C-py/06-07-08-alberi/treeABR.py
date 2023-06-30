@@ -19,11 +19,13 @@ class treeABR(treeBin.treeBin):
 		if not p: 
 			self.radice = n; #the tree was empty
 		else:
-#			n.parent = p; #already done in the set... functions
+			n.parent = p; #already done in the set... functions
 			if key < p.key:
 				p.setLeft(n);
 			else:
 				p.setRight(n);
+# pseudo code forgot it but i need it in AVL tree
+		return n;
 
 	def search(self, key):
 		tmp = self.radice;
@@ -56,14 +58,18 @@ class treeABR(treeBin.treeBin):
 			elif node.Right: # case 2
 #				print('case 2');
 				if p.getLeft() == node:
+					node.getRight().parent = p;
 					p.setLeft(node.getRight());
 				else:
+					node.getRight().parent = p;
 					p.setRight(node.getRight());
 			elif node.getLeft(): # case 3
 #				print('case 3');
 				if p.getLeft() == node:
+					node.getLeft().parent = p;
 					p.setLeft(node.getLeft());
 				else:
+					node.getLeft().parent = p;
 					p.setRight(node.getLeft());
 		else: #node is the root node
 #			print('root case');

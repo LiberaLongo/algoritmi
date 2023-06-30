@@ -5,33 +5,37 @@ import treeBin;
 import treeABR;
 import treeAVL;
 
-T = tree.tree('key', 'data');
-mamma = T.insert(T.radice, 'Laura', 'Mazzanti');
-T.insert(mamma, 'Libera', 'Longo');
-T.print();
-T.visit();
-T.draw();
+def treetest():
+	T = tree.tree('key', 'data');
+	mamma = T.insert(T.radice, 'Laura', 'Mazzanti');
+	T.insert(mamma, 'Libera', 'Longo');
+	T.show();
 
-bT = treeBin.treeBin('key', 'data');
-left = bT.insert(bT.radice, True, 'Left', 'Sinistra');
-bT.insert(bT.radice, False, 'Right', 'Destra');
-bT.insert(left, True, 'nipote', 'left');
-bT.print();
-bT.visit();
-bT.draw();
+def binarytreetest():
+	bT = treeBin.treeBin('key', 'data');
+	left = bT.insert(bT.radice, True, 'Left', 'Sinistra');
+	bT.insert(bT.radice, False, 'Right', 'Destra');
+	bT.insert(left, True, 'nipote', 'left');
+	bT.show();
 
-abrT = treeABR.treeABR(10, 'key');
-abrT.insert(7);
-abrT.insert(13);
-abrT.insert(6);
-abrT.insert(8);
-abrT.insert(15);
-abrT.insert(9);
-abrT.print();
-abrT.visit();
-abrT.draw();
+def ABRtest():
+	abrT = treeABR.treeABR(10, 'key');
+	abrT.insert(7);
+	abrT.insert(13);
+	abrT.insert(6);
+	abrT.insert(8);
+	abrT.insert(15);
+	abrT.insert(9);
+	abrT.insert(22);
+	abrT.show();
 
-avlT = treeAVL.treeAVL('key', 'data');
-avlT.print();
-avlT.visit();
-avlT.draw();
+def AVLtest():
+	avlT = treeAVL.treeAVL();
+	for i in range(9): #range(9, 0, -1) to go from 9 to 0
+		avlT.insert(i);
+	avlT.show();
+
+treetest();
+binarytreetest();
+ABRtest();
+AVLtest();
