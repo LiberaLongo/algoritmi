@@ -5,6 +5,13 @@ import networkx as nx;
 import matplotlib.pyplot as plt;
 # eseguire il comando 'pip install networkx matplotlib'
 
+# utilizzo graphviz e pydot quindi potresti dover fare anche il comando:
+# pip install pydot
+# sudo apt install graphviz
+# (pk provando 'pip install graphviz' non trova il file 'dot')
+# dot -V
+# questo comando dovrebbe dire la versione di graphviz se tutto va bene (e il file 'dot' viene trovato)
+
 class treePlain(object):
 
 #visite
@@ -70,10 +77,24 @@ class treePlain(object):
 	def draw(self):
 		#voglio disegnare quindi uso le cose già fatte... ok?
 		if self.radice:
+			#G è un grafo orientato
 			G = nx.DiGraph();
+			#inserisci la radice
 			G.add_node(self.radice.key);
+			#inserisci tutti gli altri nodi e tutti gli altri archi
 			self.drawGraph(G, self.radice);
-			nx.draw(G, with_labels=True);
+
+			#disegna G come se fosse un albero!
+			# Disegna l'albero utilizzando il layout "dot" con nx_pydot
+			pos = nx.drawing.nx_pydot.graphviz_layout(G, prog='dot');
+			# Disegna i nodi
+			nx.draw_networkx_nodes(G, pos, node_size=500, node_color='lightblue');
+			# Disegna gli archi
+			nx.draw_networkx_edges(G, pos, arrows=True);
+			# Disegna le etichette dei nodi
+			nx.draw_networkx_labels(G, pos);
+			# Mostra il grafico
+			plt.axis('off');
 			plt.show();
 
 #show => print, visit, draw

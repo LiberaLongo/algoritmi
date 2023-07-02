@@ -44,11 +44,11 @@ class treeAVL(treeABR.treeABR):
 		betha = node.betha()
 		if node and abs(betha) == 2:
 			if betha == 2:
-				if node.getLeft().betha() == -1:
+				if node.getLeft().betha() == -1: #sbilanciamento SD
 					self.rotateSX(node.getLeft());
 				self.rotateDX(node);
 			else:
-				if node.getRight().betha() == 1:
+				if node.getRight().betha() == 1: #sbilanciamento DS
 					self.rotateDX(node.getRight());
 				self.rotateSX(node);
 

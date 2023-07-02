@@ -31,8 +31,9 @@ def ABRtest():
 
 def AVLtest():
 	avlT = treeAVL.treeAVL();
-	for i in range(9): #range(9, 0, -1) to go from 9 to 0
+	for i in range(1, 21): #range(9, 0, -1) to go from 9 to 0
 		avlT.insert(i);
+		#avlT.draw(); #se vuoi disegnare l'albero step by step scommenta questa riga
 	avlT.show();
 
 treetest();

@@ -55,7 +55,7 @@ class treeABR(treeBin.treeBin):
 					p.setLeft(None);
 				else:
 					p.setRight(None);
-			elif node.Right: # case 2
+			elif node.getRight(): # case 2
 #				print('case 2');
 				if p.getLeft() == node:
 					node.getRight().parent = p;
@@ -73,7 +73,7 @@ class treeABR(treeBin.treeBin):
 					p.setRight(node.getLeft());
 		else: #node is the root node
 #			print('root case');
-			if node.Right: # case 2
+			if node.getRight(): # case 2
 				self.radice = node.getRight();
 			else: # case 1 or case 2
 				self.radice = node.getLeft();			
