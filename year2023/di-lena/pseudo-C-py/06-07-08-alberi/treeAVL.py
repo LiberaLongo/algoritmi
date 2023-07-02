@@ -1,9 +1,6 @@
 import treeABR;
 
 class treeAVL(treeABR.treeABR):
-	def __init__(self, name=''):
-		self.name = name;
-		self.radice = None;
 
 #rotazioni
 	def rotateDX(self, u):
@@ -13,14 +10,22 @@ class treeAVL(treeABR.treeABR):
 			v.parent = u.parent;
 			u.parent = v;
 			u.setLeft(v.getRight());
+			if v.getRight():		#aggiornamento padre
+				v.getRight().parent = u;
 			v.setRight(u);
 			if not v.parent: #v is the new root
 				self.radice = v;
 			else:
 				if v.parent.getLeft() == u:
 					v.parent.setLeft(v);
-				else:
+				elif v.parent.getRight() == u:
 					v.parent.setRight(v);
+				else:
+					print('rotateDX something strange happened');
+		#aggiorna altezza
+		if u.getRight():
+			u.getRight().updateHeight();
+		u.updateHeight();
 
 	def rotateSX(self, u): #simmetrico a DX
 		print(f'rotateSX({u.key})');
@@ -29,14 +34,22 @@ class treeAVL(treeABR.treeABR):
 			v.parent = u.parent;
 			u.parent = v;
 			u.setRight(v.getLeft());
+			if v.getLeft():		#aggiornamento padre
+				v.getLeft().parent = u;
 			v.setLeft(u);
 			if not v.parent: #v is the new root
 				self.radice = v;
 			else:
 				if v.parent.getRight() == u:
 					v.parent.setRight(v);
-				else:
+				elif v.parent.getLeft() == u:
 					v.parent.setLeft(v);
+				else:
+					print('rotateSX something strange happened');
+		#aggiorna altezza
+		if u.getLeft():
+			u.getLeft().updateHeight();
+		u.updateHeight();
 
 #bilanciamento
 	def balance(self, node):

@@ -19,7 +19,8 @@ def binarytreetest():
 	bT.show();
 
 def ABRtest():
-	abrT = treeABR.treeABR(10, 'key');
+	abrT = treeABR.treeABR();
+	abrT.insert(10, 'key');
 	abrT.insert(7);
 	abrT.insert(13);
 	abrT.insert(6);
@@ -33,10 +34,10 @@ def AVLtest():
 	avlT = treeAVL.treeAVL();
 	for i in range(1, 21): #range(9, 0, -1) to go from 9 to 0
 		avlT.insert(i);
-		#avlT.draw(); #se vuoi disegnare l'albero step by step scommenta questa riga
-	avlT.show();
+		avlT.draw(); #se vuoi disegnare l'albero step by step scommenta questa riga
+	#avlT.show();
 
-treetest();
-binarytreetest();
-ABRtest();
+#treetest();
+#binarytreetest();
+#ABRtest();
 AVLtest();

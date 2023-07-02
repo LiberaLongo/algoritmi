@@ -70,6 +70,10 @@ class treePlain(object):
 		if node:
 			for child in node.childrens:
 				if child:
+					#debug
+					if not child.parent == node:
+						print(f'ERROR! drawing {child.key} i have seen he haven\'t {node.key} as parent but he have {child.parent}!');
+					#code
 					Graph.add_node(child.key);
 					Graph.add_edge(node.key, child.key);
 					self.drawGraph(Graph, child);

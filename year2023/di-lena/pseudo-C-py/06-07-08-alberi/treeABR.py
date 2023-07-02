@@ -2,6 +2,9 @@ import treeBin;
 import nodeBin;
 
 class treeABR(treeBin.treeBin):
+	def __init__(self, name=''):
+		self.name = name;
+		self.radice = None;
 
 # dictionary
 	def insert(self, key, data=None):
@@ -44,54 +47,65 @@ class treeABR(treeBin.treeBin):
 #case 2: il nodo da rimuovere ha un solo figlio u
 #case 3: il nodo da rimuvere ha due figli
 
-	def deleteNode(self, node):
-#		print(f'deleteNode({node.key})');
-		p = node.parent;
-		if p:	# node is not the root node
+	def deleteNode(self, v):
+		print(f'deleteNode({v.key})');
+		p = v.parent;
+		if p:	# v is not the root node
 #			print('non root');
-			if not node.getLeft() and not node.getRight(): # case 1
-#				print('case 1');
-				if p.getLeft == node:
-					p.setLeft(None);
+			if p.getLeft() == v:
+#				print('left');
+				if v.getRight():
+#					print('right');
+					p.setLeft(v.getRight());
 				else:
-					p.setRight(None);
-			elif node.getRight(): # case 2
-#				print('case 2');
-				if p.getLeft() == node:
-					node.getRight().parent = p;
-					p.setLeft(node.getRight());
+#					print('left');
+					p.setLeft(v.getLeft());
+				#parent
+				if p.getLeft():
+					p.getLeft().parent = p;
+			elif p.getRight() == v:
+#				print('right');
+				if v.getRight():
+#					print('right');
+					p.setRight(v.getRight());
 				else:
-					node.getRight().parent = p;
-					p.setRight(node.getRight());
-			elif node.getLeft(): # case 3
-#				print('case 3');
-				if p.getLeft() == node:
-					node.getLeft().parent = p;
-					p.setLeft(node.getLeft());
-				else:
-					node.getLeft().parent = p;
-					p.setRight(node.getLeft());
-		else: #node is the root node
-#			print('root case');
-			if node.getRight(): # case 2
-				self.radice = node.getRight();
+#					print('left');
+					p.setRight(v.getLeft());
+				#parent
+				if p.getRight():
+					p.getRight().parent = p;
+			else:
+				print('something strange happened');
+		else: #v is the root node
+			print('root case');
+			if v.getRight(): # case 2
+				self.radice = v.getRight();
 			else: # case 1 or case 2
-				self.radice = node.getLeft();			
+				self.radice = v.getLeft();
+			#parent
+			if self.radice:
+				self.radice.parent = None;
+#		self.draw();
+# pseudo code forgot it but i need it in AVL tree
+		return p;
 
 	def delete(self, key):
 		print(f'delete({key})');
 		v = self.search(key);
+		print(f'searched({key}).key = {v.key}');
 		if v:
 			if not v.getLeft() or not v.getRight(): #case 1 or 2
-#				print('case 1 or 2');
+				print('case 1 or 2');
 				#why here no parent is checked?
-				self.deleteNode(v);
+				ret = self.deleteNode(v);
 			else:	#case 3
-#				print('case 3');
+				print('case 3');
 				u = self.predecessor(v);
 				v.key = u.key;
 				v.data = u.data;
-				self.deleteNode(u);
+				ret = self.deleteNode(u);
+# pseudo code forgot it but i need it in AVL tree
+		return ret;
 
 # ABR
 	def max(self, node):

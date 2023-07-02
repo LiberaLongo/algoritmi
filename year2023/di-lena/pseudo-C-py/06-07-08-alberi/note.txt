@@ -2,3 +2,20 @@
 
 classed and subclasses in python
 https://medium.com/swlh/classes-subclasses-in-python-12b6013d9f3
+
+per debuggare il prof mi ha suggerito di provare a usare asdlab:
+
+Salve,
+ le mando il codice e le istruzioni per utilizzare velocemente la libreria asdlab con alberi. In allegato c’è un file di
+esempio che utilizza gli alberi binari e generici. E’ facile modificarla per poter lavorare con gli alberi AVL.
+Deve lanciare il codice nel seguente modo
+
+java -cp asdlab.jar DemoAlberi.java
+
+I due file devono essere nella stessa directory.
+
+Saluti,
+
+ Pietro
+
+mandando in allegato il file 'DemoAlberi.java' e tentando di mandare 'asdlab.jar'
