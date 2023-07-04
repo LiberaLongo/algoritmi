@@ -14,8 +14,11 @@ java -cp asdlab.jar DemoAlberi.java
 
 I due file devono essere nella stessa directory.
 
+[...]
+
 Saluti,
 
  Pietro
 
 mandando in allegato il file 'DemoAlberi.java' e tentando di mandare 'asdlab.jar'
+
