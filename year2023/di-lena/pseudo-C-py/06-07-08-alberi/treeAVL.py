@@ -22,7 +22,7 @@ class treeAVL(treeABR.treeABR):
 					v.parent.setRight(v);
 				else:
 					print('rotateDX something strange happened');
-		#aggiorna altezza
+		#aggiorna altezza (necessario ma non nello pseudocodice)
 		if u.getRight():
 			u.getRight().updateHeight();
 		u.updateHeight();
@@ -46,7 +46,7 @@ class treeAVL(treeABR.treeABR):
 					v.parent.setLeft(v);
 				else:
 					print('rotateSX something strange happened');
-		#aggiorna altezza
+		#aggiorna altezza (necessario ma non nello pseudocodice)
 		if u.getLeft():
 			u.getLeft().updateHeight();
 		u.updateHeight();
@@ -77,6 +77,10 @@ class treeAVL(treeABR.treeABR):
 			p = p.parent;
 		if p:
 			self.balance(p);
+			#aggiorna altezza (necessario ma non nello pseudocodice)
+			while p:
+				p.updateHeight();
+				p = p.parent;
 		return (key, data); #i don't understand why i have to return infos
 
 	def delete(self, key):

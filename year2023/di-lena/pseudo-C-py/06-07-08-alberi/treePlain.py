@@ -74,7 +74,7 @@ class treePlain(object):
 					if not child.parent == node:
 						print(f'ERROR! drawing {child.key} i have seen he haven\'t {node.key} as parent but he have {child.parent}!');
 					#code
-					Graph.add_node(child.key);
+					Graph.add_node(child.key, height=child.height);
 					Graph.add_edge(node.key, child.key);
 					self.drawGraph(Graph, child);
 
@@ -84,7 +84,7 @@ class treePlain(object):
 			#G è un grafo orientato
 			G = nx.DiGraph();
 			#inserisci la radice
-			G.add_node(self.radice.key);
+			G.add_node(self.radice.key, height=self.radice.height);
 			#inserisci tutti gli altri nodi e tutti gli altri archi
 			self.drawGraph(G, self.radice);
 
@@ -92,11 +92,12 @@ class treePlain(object):
 			# Disegna l'albero utilizzando il layout "dot" con nx_pydot
 			pos = nx.drawing.nx_pydot.graphviz_layout(G, prog='dot');
 			# Disegna i nodi
-			nx.draw_networkx_nodes(G, pos, node_size=500, node_color='lightblue');
+			nx.draw_networkx_nodes(G, pos, node_size=1200, node_color='lightblue');
 			# Disegna gli archi
 			nx.draw_networkx_edges(G, pos, arrows=True);
 			# Disegna le etichette dei nodi
-			nx.draw_networkx_labels(G, pos);
+			node_labels = {node: f'{node}\nh={G.nodes[node]["height"]}' for node in G.nodes}
+			nx.draw_networkx_labels(G, pos, labels=node_labels)
 			# Mostra il grafico
 			plt.axis('off');
 			plt.show();

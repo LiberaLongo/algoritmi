@@ -48,7 +48,7 @@ class treeABR(treeBin.treeBin):
 #case 3: il nodo da rimuvere ha due figli
 
 	def deleteNode(self, v):
-		print(f'deleteNode({v.key})');
+#		print(f'deleteNode({v.key})');
 		p = v.parent;
 		if p:	# v is not the root node
 #			print('non root');
@@ -77,7 +77,7 @@ class treeABR(treeBin.treeBin):
 			else:
 				print('something strange happened');
 		else: #v is the root node
-			print('root case');
+#			print('root case');
 			if v.getRight(): # case 2
 				self.radice = v.getRight();
 			else: # case 1 or case 2
@@ -90,16 +90,16 @@ class treeABR(treeBin.treeBin):
 		return p;
 
 	def delete(self, key):
-		print(f'delete({key})');
+		print(f'\ndelete({key})');
 		v = self.search(key);
-		print(f'searched({key}).key = {v.key}');
+#		print(f'searched({key}).key = {v.key}');
 		if v:
 			if not v.getLeft() or not v.getRight(): #case 1 or 2
-				print('case 1 or 2');
+#				print('case 1 or 2');
 				#why here no parent is checked?
 				ret = self.deleteNode(v);
 			else:	#case 3
-				print('case 3');
+#				print('case 3');
 				u = self.predecessor(v);
 				v.key = u.key;
 				v.data = u.data;

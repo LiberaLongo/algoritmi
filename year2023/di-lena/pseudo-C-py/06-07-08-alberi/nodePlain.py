@@ -4,6 +4,7 @@ class nodePlain(object):
 		self.data = data;
 		self.parent = None;
 		self.childrens = None;
+		self.height = 1; #(not updated) except for AVL tree...
 
 	def printParent(self):
 #		return f'p={self.parent.key} ' if self.parent else '';
