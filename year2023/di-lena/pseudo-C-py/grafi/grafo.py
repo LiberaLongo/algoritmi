@@ -20,34 +20,8 @@ class grafo:
 		self.dizG = {};
 
 #operazioni che la struttura dati GRAFO deve supportare:
-	def numVertici(self):
-		#return int
-		pass
 
-	def numArchi(self):
-		#return int
-		pass
-
-	def grado(self, vertice):
-		#return int
-		pass
-
-	def archiIncidenti(self, vertice):
-		#return list of archi
-		pass
-
-	def estremi(self, arco):
-		#return list of nodi
-		pass
-
-	def opposto(self, vertice, arco):
-		#return nodo
-		pass
-
-	def sonoAdiacenti(self, src, dst):
-		#return bool
-		pass
-
+#creazione
 	def aggiungiVertice(self, vertice):
 		print(f'aggiungi Vertice({vertice})');
 		self.dizG[vertice] = {};
@@ -70,13 +44,52 @@ class grafo:
 		except KeyError:
 			print('Vertice non trovato');
 
-
 	def rimuoviArco(self, src, dst):
 		print(f'rimuovi Arco({src}, {dst})');
 		try:
 			del self.dizG[src][dst];
 		except:
 			print('Arco non trovato');
+
+# altre operazioni che la struttura dati dovrebbe supportare
+	def numVertici(self):
+		return len(self.dizG.keys());
+
+	def numArchi(self):
+		num_edges = 0;
+		for node in self.dizG:
+			num_edges += len(self.dizG[node]);
+		return num_edges;
+
+	def grado(self, vertice):
+		if node in self.dizG:
+			return len(self.dizG[node]);
+		return 0;
+
+	def archiIncidenti(self, vertice):
+		if node in self.dizG:
+			return list(self.dizG[node].keys());
+		return [];
+
+	def sonoAdiacenti(self, node1, node2):
+		if node1 in self.dizG and node2 in self.dizG:
+			return node2 in self.dizG[node1] or node1 in self.dizG[node2];
+		return False;
+
+#queste funzioni hanno senso solo se gli archi possono avere etichette o venisse usata un altra rappresentazione del grafo...
+	def estremi(self, edge_label):
+		lista = [];
+		for node, outgoing_edges in self.dizG.items():
+			if edge_label in outgoing_edges.values():
+				lista.append(node);
+		return lista;
+
+	def opposto(self, start_node, edge_label):
+		vertici = []
+		for end_node, outgoing_edges in self.dizG.items():
+			if start_node in outgoing_edges and outgoing_edges[start_node] == edge_label:
+				vertici.append(end_node)
+		return vertici
 
 #rappresentazioni
 	def __str__(self):
@@ -92,13 +105,14 @@ class grafo:
 		# Crea il grafo con networkX (la libreria per disegnarlo)
 		G = nx.DiGraph();
 
-		# aggiungi i nodi
-		for nodo in self.dizG:
-			G.add_node(nodo);
-
-		# aggiungi gli archi
+		# aggiungi nodi
 		for src in self.dizG:
-			for dst, _ in self.dizG[src].items():
+			G.add_node(src);
+
+		# aggiungi archi
+		for src in self.dizG:
+			for dst, label in self.dizG[src].items():
+				# aggiungi arco
 				G.add_edge(src, dst);
 		
 		# etichette tramite plt.text()

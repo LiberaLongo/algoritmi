@@ -13,6 +13,7 @@ def test():
 	G.draw();
 	G.rimuoviVertice('D');
 	G.rimuoviVertice('C');
+	print('sono adiancenti A e B', G.sonoAdiacenti('A', 'B'));
 	G.draw();
 
 #un grafo su un gioco che non volevo disegnare a mano
@@ -51,5 +52,5 @@ def roblox_cart_pirate_lvl8():
 	G.aggiungiArco('7', '1', 'forward');
 	G.aggiungiArco('stuck', 'start', 'respawn');
 	G.draw('kawai');
-#test();
+test();
 roblox_cart_pirate_lvl8();
