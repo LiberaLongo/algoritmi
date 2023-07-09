@@ -13,7 +13,7 @@ class treeAVL(treeABR.treeABR):
 			if v.getRight():		#aggiornamento padre
 				v.getRight().parent = u;
 			v.setRight(u);
-			if not v.parent: #v is the new root
+			if v.parent is None: #v is the new root
 				self.radice = v;
 			else:
 				if v.parent.getLeft() == u:
@@ -37,7 +37,7 @@ class treeAVL(treeABR.treeABR):
 			if v.getLeft():		#aggiornamento padre
 				v.getLeft().parent = u;
 			v.setLeft(u);
-			if not v.parent: #v is the new root
+			if v.parent is None: #v is the new root
 				self.radice = v;
 			else:
 				if v.parent.getRight() == u:

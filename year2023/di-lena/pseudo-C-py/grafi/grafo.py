@@ -6,6 +6,15 @@
 import networkx as nx;
 import matplotlib.pyplot as plt;
 
+all_layout = {
+    'circular': nx.circular_layout,
+    'random': nx.random_layout,
+    'shell': nx.shell_layout,
+    'spring': nx.spring_layout,
+    'spectral': nx.spectral_layout,
+    'kawai': nx.kamada_kawai_layout
+}
+
 class grafo:
 	def __init__(self):
 		self.dizG = {};
@@ -70,9 +79,15 @@ class grafo:
 			print('Arco non trovato');
 
 #rappresentazioni
-	def draw(self):
+	def __str__(self):
+		string = 'grafo = {'
+		string += "".join([f"\n\t'{k}': {v}" for k, v in self.dizG.items()]);
+		string += '\n}';
+		return string;
+
+	def draw(self, layout='kawai'):
 		#print del dizionario...
-		print('draw', self.dizG);
+		print('draw', self);
 
 		# Crea il grafo con networkX (la libreria per disegnarlo)
 		G = nx.DiGraph();
@@ -87,16 +102,25 @@ class grafo:
 				G.add_edge(src, dst);
 		
 		# etichette tramite plt.text()
-		pos = nx.circular_layout(G)
-		nx.draw_networkx(G, pos)
+		layout_func = all_layout.get(layout);
+		if layout_func is None:
+			print("Invalid layout:", layout);
+			print("Available layouts:", list(all_layout.keys()));
+			return;
+		pos = layout_func(G);
+		nx.draw_networkx(G, pos);
 
 		for src in self.dizG:
 			for dst, label in self.dizG[src].items():
 				if label:
-					x = (pos[src][0] + pos[dst][0]) / 2
-					y = (pos[src][1] + pos[dst][1]) / 2
-					plt.text(x, y, label, color='red', fontsize=8, fontweight='bold', horizontalalignment='center', verticalalignment='center')
+					x = (pos[src][0] + pos[dst][0]) / 2;
+					y = (pos[src][1] + pos[dst][1]) / 2;
+					plt.text(x, y, label, color='red', fontsize=8, fontweight='bold', horizontalalignment='center', verticalalignment='center');
 
 		# e disegno
-		plt.axis('off')
-		plt.show()
+		plt.axis('off');
+		plt.show();
+	
+	def drawAllLayout(self):
+		for layout in all_layout:
+			self.draw(layout);

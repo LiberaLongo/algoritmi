@@ -71,7 +71,7 @@ class treePlain(object):
 			for child in node.childrens:
 				if child:
 					#debug
-					if not child.parent == node:
+					if child.parent is not node:
 						print(f'ERROR! drawing {child.key} i have seen he haven\'t {node.key} as parent but he have {child.parent}!');
 					#code
 					Graph.add_node(child.key, height=child.height);

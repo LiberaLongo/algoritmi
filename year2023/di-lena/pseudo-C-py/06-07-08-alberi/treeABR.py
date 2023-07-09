@@ -19,7 +19,7 @@ class treeABR(treeBin.treeBin):
 			else:
 				s = s.getRight();
 		#insert node
-		if not p: 
+		if p is None: 
 			self.radice = n; #the tree was empty
 		else:
 			n.parent = p; #already done in the set... functions
@@ -94,7 +94,7 @@ class treeABR(treeBin.treeBin):
 		v = self.search(key);
 #		print(f'searched({key}).key = {v.key}');
 		if v:
-			if not v.getLeft() or not v.getRight(): #case 1 or 2
+			if v.getLeft() is None or v.getRight() is None: #case 1 or 2
 #				print('case 1 or 2');
 				#why here no parent is checked?
 				ret = self.deleteNode(v);
@@ -119,7 +119,7 @@ class treeABR(treeBin.treeBin):
 		return node;
 
 	def predecessor(self, node):
-		if not node:
+		if node is None:
 			return None;
 		elif node.getLeft(): #case 1
 			return self.max(node.getLeft());
@@ -131,7 +131,7 @@ class treeABR(treeBin.treeBin):
 			return p;
 
 	def successor(self):
-		if not node:
+		if node is None:
 			return None;
 		elif node.getRight(): #case 1
 			return self.min(node.getRight());
