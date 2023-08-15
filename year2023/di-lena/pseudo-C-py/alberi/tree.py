@@ -2,7 +2,7 @@ import treePlain;
 import node;
 
 class tree(treePlain.treePlain):
-	def __init__(self, key, data=None, name=''):
+	def __init__(self, key=None, data=None, name=''):
 		self.name = name;
 		self.radice = node.node(key, data);
 

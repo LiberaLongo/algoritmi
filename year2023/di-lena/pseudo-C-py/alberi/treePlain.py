@@ -80,7 +80,7 @@ class treePlain(object):
 
 	def draw(self):
 		#voglio disegnare quindi uso le cose già fatte... ok?
-		if self.radice:
+		if self.radice and self.radice.key:
 			#G è un grafo orientato
 			G = nx.DiGraph();
 			#inserisci la radice
