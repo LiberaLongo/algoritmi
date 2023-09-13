@@ -5,8 +5,6 @@ import tree;
 import treeBin;
 import treeABR;
 import treeAVL;
-# zavattaro
-import treeMaxHeap;
 
 def treetest():
 	T = tree.tree('key', 'data');
@@ -40,13 +38,8 @@ def AVLtest():
 		avlT.draw(); #se vuoi disegnare l'albero step by step scommenta questa riga
 	#avlT.show();
 
-def Heaptest():
-	mh = treeMaxHeap.treeMaxHeap();
-	mh.show();
-
 #treetest();
 #binarytreetest();
 #ABRtest();
-#AVLtest();
-Heaptest();
+AVLtest();
 
